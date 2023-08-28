@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
+import pyrr
 
 # Inicializar pygame
 pygame.init()
@@ -52,8 +53,7 @@ def draw_church():
         glVertex3f(3, 5, 5)
         glVertex3f(0, 10, 5)
         glEnd()
-
-    
+            
 def handle_mouse_input(event):
     global rotating, start_rotation
 
@@ -70,7 +70,7 @@ def handle_mouse_input(event):
         rotation[0] += (event.pos[0] - start_rotation[0]) * 0.1
         rotation[1] += (event.pos[1] - start_rotation[1]) * 0.1
         start_rotation = event.pos
-
+        
 def main():
     while True:
         for event in pygame.event.get():
@@ -87,6 +87,7 @@ def main():
         glPopMatrix()
         pygame.display.flip()
         pygame.time.wait(10)
+
 
 if __name__ == "__main__":
     main()
